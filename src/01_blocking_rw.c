@@ -1,15 +1,13 @@
 /*
-* Synchronous blocking IO using raw POSIX syscalls open, 
-* read, write and close.
-*
-* Model everything else in the package will be compared 
-* against. 
-* Usage:
-*   ./01_blocking_rw <source-file> <dest-file>
-*
-* Build:
-*   make 01
-*/
+ * Synchronous blocking IO using raw POSIX syscalls open(), 
+ * read(), write() and close().
+ *
+ * Usage:
+ *   ./01_blocking_rw <source-file> <dest-file>
+ *
+ * Build:
+ *   make 01
+ */
 
 #include <fcntl.h>      /* open, O_* flags        */
 #include <unistd.h>     /* read, write, close      */

@@ -36,5 +36,16 @@ $(BUILD_DIR):
 list:
 	@echo $(SRCS)
 
+testdata:
+	mkdir -p $(TESTDATA_DIR)
+	head -c 1000000    /dev/urandom > $(TESTDATA_DIR)/1mb.bin
+	head -c 10000000   /dev/urandom > $(TESTDATA_DIR)/10mb.bin
+	head -c 100000000  /dev/urandom > $(TESTDATA_DIR)/100mb.bin
+	@echo "generated random test files in $(TESTDATA_DIR)/"
+	@ls -lh $(TESTDATA_DIR)
+
+clean-testdata:
+	rm -rf $(TESTDATA_DIR)
+
 clean:
 	rm -rf $(BUILD_DIR)
