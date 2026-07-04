@@ -36,6 +36,8 @@ $(BUILD_DIR):
 list:
 	@echo $(SRCS)
 
+TESTDATA_DIR := testdata
+
 testdata:
 	mkdir -p $(TESTDATA_DIR)
 	head -c 1000000    /dev/urandom > $(TESTDATA_DIR)/1mb.bin
