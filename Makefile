@@ -1,9 +1,14 @@
 CC      := gcc
 CFLAGS  := -Wall -Wextra -O2 -std=gnu11
-LDLIBS  := -lrt -lpthread
 
 SRC_DIR   := src
 BUILD_DIR := build
+
+UNAME_S := $(shell uname -s)
+LDLIBS  := -lpthread
+ifeq ($(UNAME_S),Linux)
+    LDLIBS += -lrt
+endif
 
 SRCS := $(wildcard $(SRC_DIR)/*.c)
 BINS := $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%,$(SRCS))
@@ -17,7 +22,6 @@ $(BUILD_DIR)/%: $(SRC_DIR)/%.c | $(BUILD_DIR)
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
-# Convenience targets: `make 01` builds src/01_*.c
 01: $(BUILD_DIR)/01_blocking_rw
 02: $(BUILD_DIR)/02_buffered_stdio
 03: $(BUILD_DIR)/03_timing_harness
